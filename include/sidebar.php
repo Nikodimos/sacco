@@ -54,6 +54,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="./members.php" class="nav-link">
+              <i class="nav-icon ion-ios-people"></i>
+              <p>
+                Members management
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

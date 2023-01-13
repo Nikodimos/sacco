@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 10:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jan 13, 2023 at 06:57 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_branch` (
   `branch_name` varchar(100) NOT NULL,
   `maker_id` int(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_branch`
@@ -40,6 +40,35 @@ CREATE TABLE `tbl_branch` (
 
 INSERT INTO `tbl_branch` (`id`, `branch_name`, `maker_id`, `created_at`) VALUES
 (1, 'HO', 1, '2023-01-02 21:34:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_member`
+--
+
+CREATE TABLE `tbl_member` (
+  `id` int(255) NOT NULL,
+  `members_id` int(255) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `marital_status` varchar(15) NOT NULL,
+  `region` varchar(25) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `sub_city` varchar(25) NOT NULL,
+  `woreda` varchar(25) NOT NULL,
+  `house_number` varchar(25) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `educational_status` varchar(20) NOT NULL,
+  `type_of_working_company` varchar(20) NOT NULL,
+  `branch` varchar(25) NOT NULL,
+  `maker` varchar(25) NOT NULL,
+  `posting_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_by` varchar(25) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  `member_status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,7 +88,7 @@ CREATE TABLE `tbl_user` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(255) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user`
@@ -79,6 +108,13 @@ ALTER TABLE `tbl_branch`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_member`
+--
+ALTER TABLE `tbl_member`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `members_id` (`members_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -93,6 +129,12 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_branch`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_member`
+--
+ALTER TABLE `tbl_member`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

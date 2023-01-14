@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Members';
+$page_title = 'Member';
 require_once './include/session.php';
 require_once './config/config.php';
 require_once './include/header.php';

@@ -1,11 +1,17 @@
 <?php
-$page_title = 'Members';
+$page_title = 'Member';
 require_once './include/session.php';
 require_once './config/config.php';
 require_once './include/header.php';
 if($session){
     require_once './include/navbar.php';
     require_once './include/sidebar.php';
+    $memberIDSQL = 'SELECT MAX(id) AS memberid FROM tbl_member';
+    $statement = $pdo->prepare($memberIDSQL);
+    $statement->execute();
+    $maxValue = $statement->fetchColumn();;
+    $lastId= intval($maxValue);
+
 
   ?>
 <!-- Content Wrapper. Contains page content -->
@@ -41,7 +47,7 @@ if($session){
                     <div class="card-body">
                         <div class="card card-primary card-outline"> 
                             <div class="card-header">
-                                <h5 class="m-0 text-muted">2000000001</h5>
+                                <h5 class="m-0 text-muted"><?=$maxValue+2000000001;?></h5>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -50,47 +56,96 @@ if($session){
                                             <label for="name">Full Name</label>
                                             <input type="name" class="form-control" id="name">
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="phonenumber">Phone Number</label>
-                                            <input type="text" class="form-control" id="phonenumber">
+                                        <div class="form-group col-md-2">
+                                            <label for="inputState">Gender</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">Address</label>
-                                        <input type="text" class="form-control" id="inputAddress"
-                                            placeholder="1234 Main St">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress2">Address 2</label>
-                                        <input type="text" class="form-control" id="inputAddress2"
-                                            placeholder="Apartment, studio, or floor">
+                                        <div class="form-group col-md-2">
+                                            <label for="inputState">Date Of Birth</label>
+                                            <input type="date" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputState">Marital Status</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>Single</option>
+                                                <option>Married</option>
+                                                <option>Divorced</option>
+                                                <option>Widowed</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity">
-                                        </div>
                                         <div class="form-group col-md-4">
-                                            <label for="inputState">State</label>
+                                            <label for="inputState">Region</label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>Choose...</option>
                                                 <option>...</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">Zip</label>
-                                            <input type="text" class="form-control" id="inputZip">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">City</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Sub-City</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                                            <label class="form-check-label" for="gridCheck">
-                                                Check me out
-                                            </label>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Woreda</label>
+                                            <input type="name" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">House No.</label>
+                                            <input type="name" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Phone Number</label>
+                                            <input type="name" class="form-control" id="name">
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputState">Educational Status</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>Illiterate</option>
+                                                <option>Reading And Writing</option>
+                                                <option>Primary School</option>
+                                                <option>High School</option>
+                                                <option>Certificate</option>
+                                                <option>Diploma</option>
+                                                <option>Degree</option>
+                                                <option>Masters</option>
+                                                <option>PHD & Above</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputState">Type of working company</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>Government</option>
+                                                <option>Private</option>
+                                                <option>NGO</option>
+                                                <option>Spiritual</option>
+                                                <option>Cooprative</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Member</button>
                                 </form>
                             </div>
                         </div>

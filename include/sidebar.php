@@ -23,31 +23,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item">
-            <a href="./user.php" class="nav-link">
+            <a href="./user.php" class="nav-link <?php if($page_title == "User") echo "active"?>">
               <i class="nav-icon ion-person-stalker"></i>
               <p>
                 User management
@@ -55,12 +32,51 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./members.php" class="nav-link">
+            <a href="./members.php" class="nav-link <?php if($page_title == "Member") echo "active"?>">
               <i class="nav-icon ion-ios-people"></i>
               <p>
                 Members management
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="./account.php" class="nav-link <?php if($page_title == "Account") echo "active"?>">
+              <i class="nav-icon ion-ios-people"></i>
+              <p>
+                Account management
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./loan.php" class="nav-link <?php if($page_title == "Account") echo "active"?>">
+              <i class="nav-icon ion-ios-people"></i>
+              <p>
+                Loan management
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link <?php if($page_title == "Branch" || $page_title == "Address") echo "active"?>">
+              <i class="nav-icon fas ion-gear-b"></i>
+              <p>
+                System management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link <?php if($page_title == "Branch") echo "active"?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Branch</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link <?php if($page_title == "Address") echo "active"?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Address</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

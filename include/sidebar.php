@@ -1,3 +1,10 @@
+  <?php
+  function activeLink ($pageTitle,$linkName){
+    if($linkName == $pageTitle){
+      echo "active";
+    }
+  }
+  ?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -24,7 +31,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./user.php" class="nav-link <?php if($page_title == "User") echo "active"?>">
+            <a href="./user.php" class="nav-link  <?php activeLink($page_title,"User");?>">
               <i class="nav-icon ion-person-stalker"></i>
               <p>
                 User management
@@ -32,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./members.php" class="nav-link <?php if($page_title == "Member") echo "active"?>">
+            <a href="./members.php" class="nav-link <?php activeLink($page_title,"Member");?>">
               <i class="nav-icon ion-ios-people"></i>
               <p>
                 Members management
@@ -40,7 +47,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./account.php" class="nav-link <?php if($page_title == "Account") echo "active"?>">
+            <a href="./account.php" class="nav-link  <?php activeLink($page_title,"Account");?>">
               <i class="nav-icon ion-ios-people"></i>
               <p>
                 Account management
@@ -48,7 +55,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./loan.php" class="nav-link <?php if($page_title == "Account") echo "active"?>">
+            <a href="./loan.php" class="nav-link  <?php activeLink($page_title,"Loan");?>">
               <i class="nav-icon ion-ios-people"></i>
               <p>
                 Loan management

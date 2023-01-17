@@ -6,12 +6,17 @@ require_once './include/header.php';
 if($session){
     require_once './include/navbar.php';
     require_once './include/sidebar.php';
-
+    
     $userIDSQL = 'SELECT MAX(id) AS userid FROM tbl_user';
     $statement = $pdo->prepare($userIDSQL);
     $statement->execute();
     $maxValue = $statement->fetchColumn();;
     $lastId= intval($maxValue);
+
+    // Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    require_once './snippets/addUser.php';
+}
 
   ?>
 <!-- Content Wrapper. Contains page content -->
@@ -45,33 +50,44 @@ if($session){
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="card card-primary card-outline"> 
+                        <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h5 class="m-0 text-muted"><?="User Id = ". $lastId+1;?></h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="name">Full Name</label>
-                                            <input type="name" class="form-control" id="name">
+                                            <input type="name" class="form-control" id="name" name="name" required>
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="inputState">Username</label>
-                                            <input type="name" class="form-control" id="name">
+                                            <label for="username">Username</label>
+                                            <input type="username" class="form-control" id="username" name="username" required>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="inputState">Branch</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>...</option>
+                                            <select id="inputState" class="form-control" name="branch" required>
+                                                <option label="Choose..." value=""></option>
+                                                <?php
+                                                        $branchList = 'SELECT id,branch_name FROM tbl_branch';
+                                                        if($result = $pdo->query($branchList)){
+                                                            if($result->rowCount() > 0){
+                                                                while ($row = $result->fetch()):
+                                                        ?>
+                                                <option value="<?= $row["id"]?>">
+                                                    <?= $row["branch_name"]?></option>
+                                                <?php 
+                                                            endwhile; 
+                                                            }
+                                                        }?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col">
-                                            <label for="inputState">Role</label>
-                                            <input type="name" class="form-control" id="name">
+                                            <label for="role">Role</label>
+                                            <input type="name" class="form-control" name="role" required>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add User</button>

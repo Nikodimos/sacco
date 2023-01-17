@@ -62,7 +62,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-close">
+          <li class="nav-item <?php if($page_title == "Branch" || $page_title == "Address") echo "menu-open"; else echo "menu-close"?>">
             <a href="#" class="nav-link <?php if($page_title == "Branch" || $page_title == "Address") echo "active"?>">
               <i class="nav-icon fas ion-gear-b"></i>
               <p>
@@ -72,13 +72,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link <?php if($page_title == "Branch") echo "active"?>">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="./branch.php" class="nav-link <?php activeLink($page_title,"Branch");?>">
+                  <i class="fas fa-university"></i>
                   <p>Branch</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link <?php if($page_title == "Address") echo "active"?>">
+                <a href="#" class="nav-link <?php activeLink($page_title,"Address");?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Address</p>
                 </a>

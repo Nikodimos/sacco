@@ -25,5 +25,7 @@
 </head>
 
 <body
-  class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed <?php if(!$session) echo (" login-page");?> layout-footer-fixed">
-  <div class="wrapper">
+  class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed <?php if(!$_SESSION["loggedin"]) echo (" login-page");?> layout-footer-fixed">
+
+  <?php if($_SESSION["loggedin"]) echo ('<div class="wrapper">');?>
+  

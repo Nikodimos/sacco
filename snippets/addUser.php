@@ -1,7 +1,14 @@
 <?php
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: index.php");
+    exit;
+}
+
 // Define variables and initialize with empty values
-$name = $branch = $username = $role = $maker = "";
-$name_err = $branch_err = $username_err = $role_err = "";
+$name = $branch = $username = $role = $maker = null;
+$name_err = $branch_err = $username_err = $role_err = null;
 $password = "123456";
 
 // Validate username
@@ -60,7 +67,7 @@ if(empty(trim($_POST["branch"]))){
     $branch = trim($_POST["branch"]);
 }
 
-$maker = "Migration";
+$maker = "1";
 
 // Check input errors before inserting in database
 if(empty($username_err) && empty($name_err) && empty($role_err) && empty($branch_err)){

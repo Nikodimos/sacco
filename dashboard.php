@@ -1,5 +1,9 @@
   <?php
   $page_title = 'Dashboard';
+  require_once './config/config.php';
+  require_once './include/header.php';
+  require_once './include/navbar.php';
+  require_once './include/sidebar.php';
   ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -28,3 +32,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <?php
+      require_once './include/footer.php';
+      require_once './include/script.php';
+  ?>

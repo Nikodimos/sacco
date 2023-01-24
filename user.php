@@ -69,7 +69,7 @@ require_once './include/sidebar.php';
                                             <td><?php echo htmlspecialchars($row['username']) ?></td>
                                             <td><?php echo htmlspecialchars($row['role']) ?></td>
                                             <td class="text-center">
-                                                <?= '<a href="./viewUser.php?id=' . $row['uid'] . '" title="View User" data-toggle="tooltip"><i class="mx-1 text-success fas fa-eye"></i></a>' ?>
+                                                <?= '<a href="./viewUser.php?userid=' . $row['uid'] . '" title="View User" data-toggle="tooltip"><i class="mx-1 text-success fas fa-eye"></i></a>' ?>
                                             </td>
                                         </tr>
                                         <?php
